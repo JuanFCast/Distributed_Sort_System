@@ -1,19 +1,43 @@
-package org.example;
+package main.java;
 
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
-public class Main {
+import Sorter.Master;
+import com.zeroc.Ice.Communicator;
+import com.zeroc.Ice.CommunicatorDestroyedException;
+import com.zeroc.Ice.InitializationData;
+import com.zeroc.Ice.ObjectAdapter;
+import com.zeroc.Ice.Util;
+
+public class MasterServer {
     public static void main(String[] args) {
-        // Press Alt+Intro with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        int status = 0;
+        Communicator communicator = null;
 
-        // Press Mayús+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
+        try {
+            InitializationData initData = new InitializationData();
+            communicator = Util.initialize(args, initData);
 
-            // Press Mayús+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
+            ObjectAdapter adapter = communicator.createObjectAdapterWithEndpoints("MasterAdapter", "tcp -h localhost -p 10000");
+            WorkerPrx[] workers = ;// Obtener referencias a los trabajadores (puedes usar IceGrid para esto)
+            MasterImpl masterImpl = new MasterImpl(workers);
+            adapter.add(masterImpl, Util.stringToIdentity("Master"));
+            adapter.activate();
+
+            System.out.println("Servidor del maestro en ejecución...");
+
+            communicator.waitForShutdown();
+        } catch (Exception e) {
+            e.printStackTrace();
+            status = 1;
+        } finally {
+            if (communicator != null) {
+                try {
+                    communicator.destroy();
+                } catch (CommunicatorDestroyedException e) {
+                    e.printStackTrace();
+                }
+            }
         }
+
+        System.exit(status);
     }
 }
