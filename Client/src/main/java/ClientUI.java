@@ -2,8 +2,6 @@ import java.util.Scanner;
 
 public class ClientUI {
 
-    private Scanner sc;
-
     public ClientUI(){
         sc = new Scanner(System.in);
     }
@@ -14,8 +12,8 @@ public class ClientUI {
         System.out.println("2. Exit");
     }
 
-    public int getUserChoice() {
-        // Implement user input logic
+    public int getUserChoice(int opt) {
+        System.out.println("Option: ");
         return 0;
     }
 

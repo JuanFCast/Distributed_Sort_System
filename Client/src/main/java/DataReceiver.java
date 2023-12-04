@@ -7,10 +7,6 @@ import java.util.List;
 public class DataReceiver {
     private MasterPrx masterProxy;
 
-    public DataReceiver(MasterPrx masterProxy) {
-        this.masterProxy = masterProxy;
-    }
-
     public List<String> receiveSortedData() {
         try {
             StringSequence sortedData = masterProxy.getSortedResults();
