@@ -1,13 +1,16 @@
 module Sorter {
 
-    sequence<string> StringSequence; // Alias para la secuencia de strings
+    sequence<string> StringSequence;
 
     interface Worker {
-        void processData(string data);
+        void processData(StringSequence data);
+        // Métodos adicionales según sea necesario
     };
 
     interface Master {
-        void distributeWork(StringSequence data); // Usando el alias
+        void distributeWork(StringSequence data);
+        void startSorting(string filePath);
+        StringSequence getSortedResults();
+        // Métodos adicionales para la gestión del proceso de ordenamiento
     };
-
 };
