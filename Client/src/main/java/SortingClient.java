@@ -12,8 +12,8 @@ public class SortingClient {
     public void requestFileSorting(String filePath) {
         try {
             latencyTracker.start();
-            iceHandler.sendSortingRequest(filePath); // Envía la solicitud de ordenamiento
-            String sortedData = dataReceiver.receiveSortedData(); // Recibe los datos ordenados
+            iceHandler.sendSortingRequest(filePath); //Envía la solicitud de ordenamiento
+            String[] sortedData = dataReceiver.receiveSortedData(); // Recibe los datos ordenados
             handleSortResponse(sortedData);
         } catch (Exception e) {
             ErrorHandling.handleError(e);
@@ -22,15 +22,15 @@ public class SortingClient {
         }
     }
 
-    private void handleSortResponse(String sortedData) {
-        if (sortedData != null && !sortedData.isEmpty()) {
+    private void handleSortResponse(String[] sortedData) {
+        if (sortedData != null && sortedData.length != 0) {
             displaySortedData(sortedData);
         } else {
             System.out.println("No data received or data is empty.");
         }
     }
 
-    private void displaySortedData(String sortedData) {
+    private void displaySortedData(String[] sortedData) {
         // Aquí puedes implementar una lógica más compleja para mostrar los datos
         System.out.println("Sorted Data: " + sortedData);
     }
