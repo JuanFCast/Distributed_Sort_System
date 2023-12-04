@@ -2,6 +2,8 @@ import java.util.Scanner;
 
 public class ClientUI {
 
+    private Scanner sc;
+
     public ClientUI(){
         sc = new Scanner(System.in);
     }
@@ -12,13 +14,16 @@ public class ClientUI {
         System.out.println("2. Exit");
     }
 
-    public int getUserChoice(int opt) {
+    public int getUserChoice() {
         System.out.println("Option: ");
-        return 0;
+        int o = sc.nextInt();
+        System.out.println(o);
+        return o;
     }
 
     public String getFilePathFromUser() {
-        // Implement file path input logic
-        return "path/to/file";
+        System.out.println("Input the file path: ");
+        String path = sc.nextLine();
+        return path;
     }
 }

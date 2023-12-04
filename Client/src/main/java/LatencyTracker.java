@@ -8,6 +8,9 @@ public class LatencyTracker {
 
     public void stop() {
         this.endTime = System.currentTimeMillis();
-        System.out.println("Latency: " + (endTime - startTime) + " ms");
+    }
+
+    public long getLatency(){
+        return (endTime - startTime);
     }
 }

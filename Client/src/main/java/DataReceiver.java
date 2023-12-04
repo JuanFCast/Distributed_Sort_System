@@ -13,7 +13,7 @@ public class DataReceiver {
             return sortedData;
         } catch (Ice.LocalException e) {
             e.printStackTrace();
-            return null; // o manejar la excepción de manera más adecuada
+            return null;
         }
     }
 }

@@ -5,7 +5,12 @@ public class Client {
 
         try {
             ui.displayMenu();
-            sortingClient.requestFileSorting("path/to/file");
+            int opt = ui.getUserChoice();
+
+            if(opt == 1){
+                String path = ui.getFilePathFromUser();
+                sortingClient.requestFileSorting(path);
+            }
 
         } finally {
             sortingClient.shutdown();

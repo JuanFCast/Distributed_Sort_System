@@ -1,4 +1,4 @@
-rootProject.name = 'sorter'
-include 'client'
-include 'worker'
-include 'master'
+rootProject.name = 'Sorter'
+include 'Client'
+include 'Worker'
+include 'Master'
