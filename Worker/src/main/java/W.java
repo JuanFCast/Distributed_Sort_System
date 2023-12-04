@@ -7,6 +7,7 @@ import com.zeroc.Ice.ObjectPrx;
 import com.zeroc.Ice.Util;
 
 import Sorter.WorkerPrx;
+import Sorter.MasterPrx;
 
 
 
@@ -14,9 +15,9 @@ public class W {
     
     public static void main(String[] args) {
 
-        try (com.zeroc.Ice.Communicator communicator = com.zeroc.Ice.Util.initialize(args, "config.worker")) {
+        try (com.zeroc.Ice.Communicator communicator = com.zeroc.Ice.Util.initialize(args, "worker.cfg")) {
         
-            Sorter.WorkerPrx chatManagerPrx = Sorter.WorkerPrx
+            Sorter.WorkerPrx WorkerPrx = Sorter.WorkerPrx
                     .checkedCast(communicator.propertyToProxy("Worker.Proxy"));
             
             ObjectAdapter adapter = communicator.createObjectAdapter("Worker");
